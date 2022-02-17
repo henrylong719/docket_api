@@ -1,0 +1,8 @@
+{
+  "name": "docket_api",
+  "version": "1.0.0",
+  "description": "docket backend",
+  "main": "index.js",
+  "author": "Henry Long",
+  "license": "MIT"
+}
