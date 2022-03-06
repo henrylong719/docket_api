@@ -1,7 +1,9 @@
 import { Router } from 'express';
-import { getTodos } from '../controller/todoController';
+import { getTodoById, getTodos } from '../controller/todoController';
 let router = Router();
 
 router.route('/').get(getTodos);
+
+router.route('/:id').get(getTodoById);
 
 export default router;
