@@ -1,8 +1,26 @@
 {
   "name": "docket_api",
   "version": "1.0.0",
-  "description": "docket backend",
   "main": "index.js",
-  "author": "Henry Long",
-  "license": "MIT"
+  "repository": "git@github.com:henrylong719/docket_api.git",
+  "author": "henrylong <henrylong719@gmail.com>",
+  "scripts": {
+    "start": "nodemon server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.21",
+    "ts-node": "^10.6.0",
+    "typescript": "^4.6.2"
+  }
 }
