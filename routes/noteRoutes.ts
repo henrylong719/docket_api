@@ -1,9 +1,7 @@
 import { Router } from 'express';
-
+import { getNotes } from '../controller/noteController';
 let router = Router();
 
-router.get('/', (req, res) => {
-  res.send('notes');
-});
+router.route('/').get(getNotes);
 
 export default router;

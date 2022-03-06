@@ -1,8 +1,8 @@
 import expressAsyncHandler from 'express-async-handler';
 import db from '../db/index';
 
-// $desc     Fetch all products
-// $route    GET /api/products
+// $desc     Fetch all todos
+// $route    GET /api/todos
 // $access   Public
 
 const getTodos =
