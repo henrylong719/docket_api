@@ -1,8 +1,7 @@
 import { Router } from 'express';
+import { getTodos } from '../controller/todoController';
 let router = Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello World');
-});
+router.route('/').get(getTodos);
 
 export default router;

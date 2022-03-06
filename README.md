@@ -8,4 +8,4 @@
 
 #### postgresql
 
-#### graphql
+#### redis
