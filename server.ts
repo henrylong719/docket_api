@@ -3,10 +3,6 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 
-// Routes
-import noteRoutes from './routes/noteRoutes';
-import todoRoutes from './routes/todoRoutes';
-
 import { notFound, errorHandler } from './middleware/errorMiddleware';
 
 dotenv.config();
@@ -20,8 +16,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // anything goes to /api/note, linking to notesRoutes
-app.use('/api/notes', noteRoutes);
-app.use('/api/todos', todoRoutes);
 
 // middleware to handle not found URL (./middleware/errorMiddleware.js)
 app.use(notFound);
