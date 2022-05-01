@@ -1,0 +1,25 @@
+# Custom Scalars
+
+scalar Date
+
+type Query {
+  # Users
+  users: [User!]!
+  user(id: ID!): User
+
+  # Todos
+  todos: [Todo!]!
+  todo(id: ID!): Todo
+}
+
+type Mutation {
+  # Users
+  # createUser(name: String!, email: String!): User!
+  updateUser(id: ID!, user: UserUpdateInput!): UserPayload!
+  deleteUser(id: ID!): UserPayload!
+
+  # Todos
+  createTodo(todo: CreateTodoInput!): TodoPayload!
+  updateTodo(todo: UpdateTodoInput!): TodoPayload!
+  deleteTodo(id: ID!): TodoPayload!
+}
