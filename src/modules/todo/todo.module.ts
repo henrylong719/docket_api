@@ -1,35 +1,34 @@
+import { ApolloError } from 'apollo-server-express';
 import { createModule } from 'graphql-modules';
 import db from '../../db';
-import { TodoPayload } from '../../generated-types/graphql';
 import { loadTypeDefFromFile } from '../../utils/graphql-parser';
 
 const typeDefs = loadTypeDefFromFile('src/modules/todo/todo_typedefs.graphql');
 
 export const TodoModule = createModule({
-  id: 'todos',
+  id: 'todo',
   dirname: __dirname,
   typeDefs: typeDefs,
   resolvers: {
     Query: {
+      todos: async (_: any, args: any) => {
+        try {
+          const todos = await db.query('SELECT * FROM todos');
+          return todos.rows;
+        } catch (err: any) {
+          throw new ApolloError(err);
+        }
+      },
       todo: async (_: any, args: any) => {
         try {
-          const todoData = await db.query('SELECT * FROM todos');
-
-          return {
-            success: true,
-            results: todoData.rows.length,
-            data: {
-              todos: todoData.rows,
-            },
-          };
-        } catch (err) {
-          return {
-            success: false,
-            error: err,
-          } as TodoPayload;
+          const todo = await db.query('SELECT * FROM todos WHERE id = $1', [
+            args.id,
+          ]);
+          return todo.rows[0];
+        } catch (error: any) {
+          throw new ApolloError(error);
         }
       },
     },
-    Mutation: {},
   },
 });

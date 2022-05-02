@@ -4,6 +4,7 @@ import express from 'express';
 import http from 'http';
 import { createApplication } from 'graphql-modules';
 import { docketModules } from './src/modules';
+require('dotenv').config();
 
 async function startApolloServer() {
   const app = express();

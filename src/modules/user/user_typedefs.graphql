@@ -30,6 +30,7 @@ input UserUpdateInput {
 
 type UserPayload {
   success: Boolean!
+  results: Int
   user: User!
   error: String
 }

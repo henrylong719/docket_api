@@ -4,12 +4,8 @@ scalar Date
 type Todo {
   id: ID!
   title: String!
+  user_id: ID!
   completed: Boolean!
-  createdAt: Date!
-  updatedAt: Date!
-  user: User!
-
-  # Interface required
   created_at: Date!
   updated_at: Date!
 }
@@ -31,8 +27,13 @@ type Query {
   todo(id: ID!): Todo
 }
 
+# extend type Todo {
+#   user: User!
+# }
+
 type TodoPayload {
   success: Boolean!
+  results: Int
   error: String
   data: Todo!
 }

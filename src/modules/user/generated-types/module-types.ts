@@ -4,7 +4,7 @@ import * as gm from "graphql-modules";
 export namespace UserModule {
   interface DefinedFields {
     User: 'id' | 'name' | 'email' | 'password' | 'created_at' | 'updated_at';
-    UserPayload: 'success' | 'user' | 'error';
+    UserPayload: 'success' | 'results' | 'user' | 'error';
     Query: 'users' | 'user';
     Mutation: 'createUser' | 'updateUser' | 'deleteUser';
   };
@@ -53,6 +53,7 @@ export namespace UserModule {
     UserPayload?: {
       '*'?: gm.Middleware[];
       success?: gm.Middleware[];
+      results?: gm.Middleware[];
       user?: gm.Middleware[];
       error?: gm.Middleware[];
     };

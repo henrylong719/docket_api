@@ -22,7 +22,6 @@
     "express-async-handler": "^1.2.0",
     "graphql": "^16.4.0",
     "graphql-modules": "^2.0.0",
-    "morgan": "^1.10.0",
     "pg": "^8.7.3"
   },
   "devDependencies": {
