@@ -1,0 +1,45 @@
+# Types
+scalar Date
+
+type Todo {
+  id: ID!
+  title: String!
+  completed: Boolean!
+  createdAt: Date!
+  updatedAt: Date!
+  user: User!
+
+  # Interface required
+  created_at: Date!
+  updated_at: Date!
+}
+
+input TodoCreateInput {
+  title: String!
+  completed: Boolean!
+  user: ID!
+}
+
+input TodoUpdateInput {
+  title: String
+  completed: Boolean
+}
+
+type Query {
+  # Todos
+  todos: [Todo]!
+  todo(id: ID!): Todo
+}
+
+type TodoPayload {
+  success: Boolean!
+  error: String
+  data: Todo!
+}
+
+type Mutation {
+  # Todos
+  createTodo(todo: TodoCreateInput!): TodoPayload!
+  updateTodo(todo: TodoUpdateInput!): TodoPayload!
+  deleteTodo(id: ID!): TodoPayload!
+}

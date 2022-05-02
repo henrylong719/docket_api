@@ -1,0 +1,48 @@
+# Types
+
+scalar Date
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+
+  # Interface required
+  created_at: Date!
+  updated_at: Date!
+}
+
+# inputs
+input UserCreateInput {
+  name: String!
+  email: String!
+  password: String!
+  isAdmin: Boolean!
+}
+
+input UserUpdateInput {
+  name: String!
+  email: String!
+  password: String!
+  isAdmin: Boolean!
+}
+
+type UserPayload {
+  success: Boolean!
+  user: User!
+  error: String
+}
+
+type Query {
+  # Users
+  users: [User!]!
+  user(id: ID!): User
+}
+
+type Mutation {
+  # Users
+  createUser(name: String!, user: UserCreateInput!): UserPayload!
+  updateUser(id: ID!, user: UserUpdateInput!): UserPayload!
+  deleteUser(id: ID!): UserPayload!
+}

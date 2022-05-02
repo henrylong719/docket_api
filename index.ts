@@ -1,13 +1,35 @@
-import { port } from './config/environment';
-import app from './app';
+import { ApolloServer } from 'apollo-server-express';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
+import express from 'express';
+import http from 'http';
+import { createApplication } from 'graphql-modules';
+import { docketModules } from './src/modules';
 
-const startExpressServer = async () => {
-  try {
-    await app.listen(port);
-    console.log(`🚀  GraphQL server running at port: ${port}`);
-  } catch {
-    console.log('Not able to run GraphQL server');
-  }
-};
+async function startApolloServer() {
+  const app = express();
+  const httpServer = http.createServer(app);
 
-startExpressServer();
+  const application = createApplication({
+    modules: docketModules,
+  });
+
+  const schema = application.createSchemaForApollo();
+
+  const server = new ApolloServer({
+    schema,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+  });
+
+  await server.start();
+  server.applyMiddleware({ app });
+
+  const PORT = process.env.PORT || 4000;
+
+  httpServer.listen({ port: 4000 }, () => {
+    console.log(
+      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+    );
+  });
+}
+
+startApolloServer().catch(console.error);
