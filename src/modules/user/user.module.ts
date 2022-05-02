@@ -1,6 +1,6 @@
 import { createModule } from 'graphql-modules';
-import { UserPayload } from '../../../server/src/generated-types/graphql';
 import db from '../../db';
+import { UserPayload } from '../../generated-types/graphql';
 import { loadTypeDefFromFile } from '../../utils/graphql-parser';
 
 const typeDefs = loadTypeDefFromFile('src/modules/user/user_typedefs.graphql');

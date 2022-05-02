@@ -1,6 +1,6 @@
 import { createModule } from 'graphql-modules';
-import { TodoPayload } from '../../../server/src/generated-types/graphql';
 import db from '../../db';
+import { TodoPayload } from '../../generated-types/graphql';
 import { loadTypeDefFromFile } from '../../utils/graphql-parser';
 
 const typeDefs = loadTypeDefFromFile('src/modules/todo/todo_typedefs.graphql');
