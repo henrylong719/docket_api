@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { body } from 'express-validator';
 import express, { Request, Response } from 'express';
 import { validateRequest } from '../middlewares/validate-request';
+import { BadRequestError } from '../errors/bad-request-error';
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ router.post(
     if (existingUser) {
       // console.log('Email in use');
       // return res.send({});
-      // throw new BadRequestError('Email in use');
+      throw new BadRequestError('Email in use');
     }
 
     const user = User.build({ email, password });
